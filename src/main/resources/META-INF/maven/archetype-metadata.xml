@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor name="restService">
+	<requiredProperties>
+		<requiredProperty key="groupId">
+			<defaultValue>com.mycompany</defaultValue>
+		</requiredProperty>
+		<requiredProperty key="artifactId" />
+	</requiredProperties>
+
+	<fileSets>
+
+		<fileSet filtered="true" packaged="true" encoding="UTF-8">
+			<directory>src/main/java</directory>
+			<includes>
+				<include>**/*.java</include>
+			</includes>
+		</fileSet>
+
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>src/main/webapp</directory>
+			<includes>
+				<include>**/*.jsp</include>
+				<include>**/*.xml</include>
+			</includes>
+		</fileSet>
+
+		<fileSet encoding="UTF-8">
+			<directory>src/main/webapp</directory>
+			<includes>
+				<include>**/*.tld</include>
+				<include>**/*.jspf</include>
+				<include>**/*.gif</include>
+				<include>**/*.css</include>
+				<include>**/*.png</include>
+				<include>**/*.jpg</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+
+</archetype-descriptor>
