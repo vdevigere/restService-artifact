@@ -1,5 +1,4 @@
-package ${package}.launcher;
-
+package ${package};
 import java.io.File;
 import java.io.IOException;
 
@@ -26,12 +25,13 @@ public class StartServer {
 		// Deploy .WAR file
 		Deployer deployer = glassfish.getDeployer();
 		
-//		ScatteredArchive archive = new ScatteredArchive("${artifactId}", ScatteredArchive.Type.WAR);
-//		archive.addClassPath(new File("target", "classes"));
-//		archive.addMetadata(new File("src/main/webapp/WEB-INF", "web.xml"));
-//		deployer.deploy(archive.toURI());
+		ScatteredArchive archive = new ScatteredArchive("${artifactId}", ScatteredArchive.Type.WAR);
+		archive.addClassPath(new File("target", "classes"));
+		archive.addMetadata(new File("src/main/webapp/WEB-INF", "web.xml"));
+		archive.addMetadata(new File("src/main/resources/META-INF", "persistence.xml"));
+		deployer.deploy(archive.toURI());
 		
-		deployer.deploy(new File("target/${artifactId}-${version}.war")); 
+//		deployer.deploy(new File("target/${artifactId}-${version}.war")); 
 	}
 
 }

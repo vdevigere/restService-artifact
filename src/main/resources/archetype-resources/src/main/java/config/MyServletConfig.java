@@ -8,6 +8,6 @@ public class MyServletConfig extends GuiceServletContextListener{
 
 	@Override
 	protected Injector getInjector() {
-	    return Guice.createInjector(new JerseyModule());
+	    return Guice.createInjector(new PersistenceModule(), new JerseyModule());
 	}
 }
