@@ -1,36 +1,18 @@
-package ${package}.persister;
-
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
+package com.example.persister;
 
 import com.google.inject.persist.Transactional;
 
-public class MessagePersister {
+public interface MessagePersister {
 
-	@Inject
-	EntityManager em;
+    @Transactional
+    public abstract Long save(String message);
 
-	@Transactional
-	public Integer save(String message) {
-		Message m = new Message(message);
-		em.persist(m);
-		return m.id;
-	}
+    @Transactional
+    public abstract void update(Long id, String newMessage);
 
-	@Transactional
-	public void update(Integer id, String newMessage) {
-		Message message = getById(id);
-		message.setMessage(newMessage);
-		em.persist(message);
-	}
+    public abstract Message getById(Long id);
 
-	public Message getById(Integer id) {
-		return em.find(Message.class, id);
-	}
-
-	@Transactional
-	public void deleteById(Integer id) {
-		em.remove(getById(id));
-	}
+    @Transactional
+    public abstract void deleteById(Long id);
 
 }

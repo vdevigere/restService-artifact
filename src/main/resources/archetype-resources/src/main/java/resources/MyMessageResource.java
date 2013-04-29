@@ -1,4 +1,4 @@
-package ${package}.resources;
+package com.example.resources;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -10,7 +10,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.inject.Inject;
 
-import ${package}.persister.MessagePersister;
+import com.example.persister.MessagePersister;
 
 @Path("/message")
 public class MyMessageResource {
@@ -27,7 +27,7 @@ public class MyMessageResource {
 
 	@PUT
 	@Path("/update/{messageId}")
-	public void updateMessage(@PathParam("messageId") Integer id,
+	public void updateMessage(@PathParam("messageId") Long id,
 			@QueryParam("newMessage") String newMessage) {
 		messagePersister.update(id, newMessage);
 	}
@@ -35,13 +35,13 @@ public class MyMessageResource {
 	@GET
 	@Path("/{messageId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getMessage(@PathParam("messageId") Integer id) {
+	public String getMessage(@PathParam("messageId") Long id) {
 		return messagePersister.getById(id).getMessage();
 	}
 	
 	@DELETE
 	@Path("/delete/{messageId}")
-	public void deleteMessage(@PathParam("messageId") Integer id){
+	public void deleteMessage(@PathParam("messageId") Long id){
 		messagePersister.deleteById(id);
 	}
 }
